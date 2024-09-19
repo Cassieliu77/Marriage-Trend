@@ -1,0 +1,81 @@
+---
+title: "Increasing Trend in Marriage Licenses Issued Over Time (2011–2025)"
+author: 
+  - Yongqi Liu
+thanks: "Code and data are available at: LINK."
+date: today
+date-format: long
+abstract: "Illustrate the trend in marriage licenses issued between 2011 and 2025. Get the evidence that there are some fluctuations throughout the period, the smoothed curve indicates a relatively stable trend until around 2020, followed by a noticeable increase in the number of licenses issued. "
+format: pdf
+number-sections: true
+bibliography: references.bib
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+
+data <- read_csv(here::here("data/analysis_data/analysis_data.csv"))
+
+```
+
+
+# Introduction
+
+We use @citeopendatatoronto, and @rohan.
+
+The remainder of this paper is structured as follows. @sec-mydatasection
+
+# Data
+
+```{r}
+#| label: fig-marriage
+#| fig-cap: Smoothed Trend of Marriage Licenses Over Time
+#| echo: false
+
+data |> 
+  ggplot(aes(x = date, y = marriage_licenses)) +
+  geom_point(color = "lightblue") +  # Optional points
+  geom_smooth(method = "loess", color = "blue") +  # Smoothed trend line
+  labs(title = "Smoothed Trend of Marriage Licenses Over Time",
+       x = "Date", y = "Number of Marriage Licenses") +
+  theme_minimal()
+```
+
+@fig-marriage graph represents the trend of marriage licenses issued over time, with **date** on the x-axis and the **number of marriage licenses** on the y-axis. I use both points and a smoothed curve.
+The light blue dots represent individual data points for marriage licenses at different times, providing a scatterplot view of the raw data. The dark blue line represents a **smoothed trend** of the marriage licenses over time. The shaded area around the smoothed line represents the **confidence interval** of the trend. It shows the level of uncertainty or variability in the trend estimate. The wider the shaded area, the more uncertain the trend in that part of the graph.
+Between 2010 and around 2020, the number of marriage licenses remains relatively stable or slightly declining.After 2020, there is a notable increase in the number of marriage licenses, which is reflected in the upward curve at the far right of the graph. The graph provides a clear visual of both individual data points and an overall upward trend in marriage licenses issued in the more recent years, with a degree of uncertainty as shown by the confidence interval shading.
+
+
+
+
+# Discussion
+
+## First discussion point {#sec-first-point}
+
+## Second discussion point
+
+## Third discussion point
+
+## Weaknesses and next steps
+
+Weaknesses and next steps should also be included.
+
+\newpage
+
+\appendix
+
+# Appendix {-}
+
+
+# Additional data details
+
+
+
+\newpage
+
+
+# References
